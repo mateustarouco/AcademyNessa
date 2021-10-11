@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-3 mb-3">
+    <button mat-raised-button color="primary" routerLink=""><i><mat-icon svgIcon="back"></mat-icon></i></button>
+    </div>
+  </div>
+  <div class="row"  *ngFor="let treinos of treinos">
+    <mat-card class="m-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-4">
+            <video width="100%" autoplay muted loop>
+              <source src="assets/gifs/{{treinos.video}}.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="col d-flex align-items-center"><h3>{{treinos.name}}</h3></div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
