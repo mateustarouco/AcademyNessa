@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {Treinosservice} from "./treinosservice";
 
 @Component({
   selector: 'app-treinos',
@@ -8,62 +9,32 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class TrainingComponent implements OnInit {
   selected = 0
+  title = ''
   treinos : Array<any> = []
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private treinosService : Treinosservice) {
     this.route.queryParams.subscribe(params => {
       this.selected = params[0];
     });
   }
-  treinos1 = [
-    {name:'Rotação externa do quadril',
-     video: '0'},
-    {name:'Flexão e extenção do ombro',
-      video: '11'},
-    {name:'Prancha frontal isométrica',
-      video: '1'},
-    {name:'Leg press horizontal',
-      video: '2'},
-    {name:'Supino inclinado articulado',
-      video: '10'},
-    {name:'Cadeira extensora',
-      video: '3'},
-    {name:'Rosca Alternada',
-      video: '4'},
-    {name:'Agachamento peso corporal',
-      video: '5'},
-    {name:'Voador',
-      video: '6'},
-    {name:'Rosca martelo com halter',
-      video: '7'}
-  ]
-  treinos2 = [
-    {name:'Rotação externa do quadril',
-      video: '0'},
-    {name:'Flexão e extenção do ombro',
-      video: '11'},
-    {name:'Prancha frontal isométrica',
-      video: '1'},
-    {name:'Leg press horizontal',
-      video: '2'},
-    {name:'Supino inclinado articulado',
-      video: '10'},
-    {name:'Cadeira extensora',
-      video: '3'},
-    {name:'Rosca Alternada',
-      video: '4'},
-    {name:'Agachamento peso corporal',
-      video: '5'},
-    {name:'Voador',
-      video: '6'},
-    {name:'Rosca martelo com halter',
-      video: '7'}
-  ]
+
 
   ngOnInit(): void {
     if(this.selected == 1){
-      this.treinos = this.treinos1
+      this.treinos = this.treinosService.treinos1
+      this.title = 'Treino 1'
     }else if(this.selected == 2){
-      this.treinos = this.treinos2
+      this.treinos = this.treinosService.treinos2
+      this.title = 'Treino 2'
+    }else if(this.selected == 3){
+      this.treinos = this.treinosService.treinos3
+      this.title = 'Treino 3'
+    }else if(this.selected == 4){
+      this.treinos = this.treinosService.treinos4
+      this.title = 'Treino 4'
+    }else if(this.selected == 5){
+      this.treinos = this.treinosService.treinos5
+      this.title = 'Treino 5'
     }
   }
 
